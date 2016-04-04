@@ -1,7 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto"
     tools:context="company.petron.wifiinfo.MainActivity_wifi_info">
+
+    <item android:id="@+id/add"
+        android:icon="@drawable/stat_sys_tether_wifi"
+        android:title="@string/wifi"
+        android:orderInCategory="1"
+        yourapp:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

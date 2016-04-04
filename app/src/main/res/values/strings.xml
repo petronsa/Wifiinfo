@@ -9,4 +9,5 @@
     <string name="mac">MAC :</string>
     <string name="velocidad">Velocidad :</string>
     <string name="rssi">RSSI :</string>
+    <string name="wifi">Wifi</string>
 </resources>
