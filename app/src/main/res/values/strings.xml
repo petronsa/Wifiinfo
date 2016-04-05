@@ -2,7 +2,7 @@
     <string name="app_name">Wifi info</string>
     <string name="action_settings">Settings</string>
     <string name="estado">Estado :</string>
-    <string name="ip">IP :</string>
+    <string name="ip">IP :     </string>
     <string name="ssid">SSID :</string>
     <string name="ssid_oculto">SSID oculto :</string>
     <string name="bssid">BSSID :</string>
@@ -15,4 +15,9 @@
     <string name="votar">Votar</string>
     <string name="salir">Salir</string>
     <string name="reiniciar">Reiniciar</string>
+    <string name="estado_conectado">Estado: Conectado a red Wifi</string>
+    <string name="estado_desconectado">Estado: No conectado a red Wifi</string>
+    <string name="ssid_oculto_si">SSID oculto : Sí</string>
+    <string name="ssid_oculto_no">SSID oculto : No</string>
+
 </resources>
