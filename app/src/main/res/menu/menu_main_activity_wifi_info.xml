@@ -4,11 +4,30 @@
     xmlns:yourapp="http://schemas.android.com/apk/res-auto"
     tools:context="company.petron.wifiinfo.MainActivity_wifi_info">
 
-    <item android:id="@+id/add"
-        android:icon="@drawable/stat_sys_tether_wifi"
-        android:title="@string/wifi"
-        android:orderInCategory="1"
+    <item android:id="@+id/estado_wifi_off"
+        android:icon="@drawable/wifi_off"
+        android:title="@string/wifi_off"
+
         yourapp:showAsAction="ifRoom"/>
+    <item android:id="@+id/estado_wifi_on"
+        android:icon="@drawable/wifi_on"
+        android:title="@string/wifi_on"
+
+        yourapp:showAsAction="ifRoom"/>
+    <item android:id="@+id/ayuda"
+        android:title="@string/ayuda"
+        android:orderInCategory="20"/>
+    <item android:id="@+id/votar"
+        android:title="@string/votar"
+        android:orderInCategory="50"/>
+    <item android:id="@+id/reiniciar"
+        android:title="@string/reiniciar"
+        android:icon="@drawable/ic_menu_refresh"
+        android:orderInCategory="60"
+        yourapp:showAsAction="ifRoom" />
+    <item android:id="@+id/salir"
+        android:title="@string/salir"
+        android:orderInCategory="70"/>
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

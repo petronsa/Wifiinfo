@@ -1,8 +1,10 @@
 package company.petron.wifiinfo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -19,9 +21,11 @@ public class MainActivity_wifi_info extends AppCompatActivity {
 
     TextView textEstado, textIP, textSSID, textSIDOculto;
     TextView textBSSID, textMAC, textVelocidad, textRSSI;
-    private String infoIP, infoSSID, infoBSSID,
+    String infoIP, infoSSID, infoBSSID,
             infoSSIDOculto, infoEstado, infoRSSID,
             infoMAC, infoVelocidad;
+    WifiManager wifiManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class MainActivity_wifi_info extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
-
+        wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
         textEstado = (TextView)findViewById(R.id.txtEstado);
         textIP = (TextView)findViewById(R.id.txtIP);
 
@@ -48,6 +52,7 @@ public class MainActivity_wifi_info extends AppCompatActivity {
         textMAC = (TextView)findViewById(R.id.txtMAC);
         textVelocidad = (TextView)findViewById(R.id.txtVelocidad);
         textRSSI = (TextView)findViewById(R.id.txtRSSI);
+
 
         ConnectivityManager mAdministradorConexion =
                 (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
@@ -80,9 +85,9 @@ public class MainActivity_wifi_info extends AppCompatActivity {
             infoRSSID = "RSSI: " + mInformacionWifi.getRssi();
             infoMAC = "MAC: " + mInformacionWifi.getMacAddress();
             if (!mInformacionWifi.getHiddenSSID())
-                infoSSIDOculto = "SID oculto: No";
+                infoSSIDOculto = "SSID oculto: No";
             else
-                infoSSIDOculto = "SID oculto: Sí";
+                infoSSIDOculto = "SSID oculto: Sí";
 
             textIP.setText(infoIP);
             textEstado.setText(infoEstado);
@@ -113,27 +118,109 @@ public class MainActivity_wifi_info extends AppCompatActivity {
             textRSSI.setText(infoRSSID);
             textMAC.setText(infoMAC);
         }
+
     }
+
+        public void wifi (View view)
+        {
+            EstadoWifi();
+        }
+
+        public void estadowifi(boolean valor)
+        {
+
+
+        }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_activity_wifi_info, menu);
-        return true;
+
+       getMenuInflater().inflate(R.menu.menu_main_activity_wifi_info, menu);
+         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public boolean onPrepareOptionsMenu(final Menu menu){
+        MenuItem menuItemWifiOff = menu.findItem(R.id.estado_wifi_off);
+        MenuItem menuItemWifiOn= menu.findItem(R.id.estado_wifi_on);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (wifiManager.isWifiEnabled()){
+            menuItemWifiOn.setEnabled(true).setVisible(true);
+            menuItemWifiOff.setEnabled(false).setVisible(false);
+        }
+        else {
+            menuItemWifiOn.setEnabled(false).setVisible(false);
+            menuItemWifiOff.setEnabled(true).setVisible(true);
         }
 
-        return super.onOptionsItemSelected(item);
+        return super.onPrepareOptionsMenu(menu);
     }
+    public void EstadoWifi()
+    {
+        wifiManager.setWifiEnabled(!wifiManager.isWifiEnabled());
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+        @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.estado_wifi_on:
+                wifiManager.setWifiEnabled(true);
+                EstadoWifi();
+               invalidateOptionsMenu();
+            case R.id.estado_wifi_off:
+                wifiManager.setWifiEnabled(false);
+                EstadoWifi();
+                invalidateOptionsMenu();
+
+            return true;
+
+            case R.id.ayuda:
+                //boton ayuda
+
+                return true;
+
+            case R.id.votar:
+                //boton votar
+                Uri uriUrl = Uri.parse("https://play.google.com/store/apps/details?id=company.petron.imei");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uriUrl);
+                startActivity(intent);
+                return true;
+            case R.id.reiniciar:
+                //reinicia la aplicación
+                Intent reinicio = getIntent();
+                finish();
+                startActivity(reinicio);
+
+                return true;
+            case R.id.salir:
+                //botón salir
+               // MainActivity_imei.this.startAppAd.showAd();
+               // MainActivity_imei.this.startAppAd.loadAd();
+                finish();
+                return true;
+            case R.id.action_settings:
+                //botón salir
+                //MainActivity_imei.this.startAppAd.showAd();
+                //MainActivity_imei.this.startAppAd.loadAd();
+                finish();
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+    }
+    }
+
 }

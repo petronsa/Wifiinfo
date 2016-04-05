@@ -9,5 +9,10 @@
     <string name="mac">MAC :</string>
     <string name="velocidad">Velocidad :</string>
     <string name="rssi">RSSI :</string>
-    <string name="wifi">Wifi</string>
+    <string name="wifi_on">Wifi On</string>
+    <string name="wifi_off">Wifi Off</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="votar">Votar</string>
+    <string name="salir">Salir</string>
+    <string name="reiniciar">Reiniciar</string>
 </resources>
