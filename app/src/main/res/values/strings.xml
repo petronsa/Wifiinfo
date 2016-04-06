@@ -19,5 +19,8 @@
     <string name="estado_desconectado">Estado: No conectado a red Wifi</string>
     <string name="ssid_oculto_si">SSID oculto : Sí</string>
     <string name="ssid_oculto_no">SSID oculto : No</string>
+    <string name="men_wifi_on">Wifi on</string>
+    <string name="men_wifi_off">Wifi off</string>
+    <string name="actualizar">Actualizar</string>
 
 </resources>

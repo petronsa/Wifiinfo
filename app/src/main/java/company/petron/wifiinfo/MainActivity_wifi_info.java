@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity_wifi_info extends AppCompatActivity {
 
@@ -54,71 +55,75 @@ public class MainActivity_wifi_info extends AppCompatActivity {
         textVelocidad = (TextView)findViewById(R.id.txtVelocidad);
         textRSSI = (TextView)findViewById(R.id.txtRSSI);
 
+        ConnectivityManager mAdministradorConexion =
+                (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo mInformacionRed =
+                mAdministradorConexion.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        WifiManager mAdministradorWifi =
+                (WifiManager)getSystemService(Context.WIFI_SERVICE);
+        WifiInfo mInformacionWifi = mAdministradorWifi.getConnectionInfo();
+        if (mInformacionRed.isConnected())
+        {
+            int myIp = mInformacionWifi.getIpAddress();
+            int intMyIp3 = myIp/0x1000000;
+            int intMyIp3mod = myIp%0x1000000;
+            int intMyIp2 = intMyIp3mod/0x10000;
+            int intMyIp2mod = intMyIp3mod%0x10000;
+            int intMyIp1 = intMyIp2mod/0x100;
+            int intMyIp0 = intMyIp2mod%0x100;
 
+            infoIP = " "+ String.valueOf(intMyIp0)
+                    + "." + String.valueOf(intMyIp1)
+                    + "." + String.valueOf(intMyIp2)
+                    + "." + String.valueOf(intMyIp3);
+            infoEstado = (getResources().getString(R.string.estado_conectado));
+            infoVelocidad = " "+ String.valueOf(
+                    mInformacionWifi.getLinkSpeed()) + " " +
+                    WifiInfo.LINK_SPEED_UNITS;
+            infoSSID =  " "+ mInformacionWifi.getSSID();
+            infoBSSID = " "+ mInformacionWifi.getBSSID();
+            infoRSSID = (getResources().getString(R.string.rssi ))+ " " + mInformacionWifi.getRssi();
+            infoMAC = " " +  mInformacionWifi.getMacAddress();
+            if (!mInformacionWifi.getHiddenSSID())
+                infoSSIDOculto = (getResources().getString(R.string.ssid_oculto_no));
+            else
+                infoSSIDOculto = (getResources().getString(R.string.ssid_oculto_si));
+
+            textIP.setText (getResources().getString(R.string.ip)+infoIP);
+            textEstado.setText(infoEstado);
+            textVelocidad.setText(getResources().getString(R.string.velocidad)+ infoVelocidad);
+            textSSID.setText(getResources().getString(R.string.ssid)+ infoSSID);
+            textSIDOculto.setText(infoSSIDOculto);
+            textBSSID.setText (getResources().getString(R.string.bssid )+infoBSSID);
+            textRSSI.setText(infoRSSID);
+            textMAC.setText(getResources().getString(R.string.mac)+infoMAC);
+        }
+        else
+        {
+
+            infoEstado = (getResources().getString(R.string.estado_desconectado));
+            infoNodatos= " --";
+
+            textEstado.setText (infoEstado);
+            textIP.setText(getResources().getString(R.string.ip)+infoNodatos);
+            textVelocidad.setText (getResources().getString(R.string.velocidad)+ infoNodatos);
+            textSSID.setText(getResources().getString(R.string.ssid)+ infoNodatos);
+            textSIDOculto.setText(getResources().getString(R.string.ssid_oculto)+ infoNodatos);
+            textBSSID.setText(getResources().getString(R.string.bssid)+ infoNodatos);
+            textRSSI.setText(getResources().getString(R.string.rssi)+ infoNodatos);
+            textMAC.setText (getResources().getString(R.string.mac)+ infoNodatos);
+        }
+
+        if (wifiManager.isWifiEnabled()){
+            mensajewifion();}
+        else {
+            mensajewifioff();
+        }
 
 
     }
 
-       public void detalleswifi(){
-           ConnectivityManager mAdministradorConexion =
-                   (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-           NetworkInfo mInformacionRed =
-                   mAdministradorConexion.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-           WifiManager mAdministradorWifi =
-                   (WifiManager)getSystemService(Context.WIFI_SERVICE);
-           WifiInfo mInformacionWifi = mAdministradorWifi.getConnectionInfo();
-           if (mInformacionRed.isConnected())
-           {
-               int myIp = mInformacionWifi.getIpAddress();
-               int intMyIp3 = myIp/0x1000000;
-               int intMyIp3mod = myIp%0x1000000;
-               int intMyIp2 = intMyIp3mod/0x10000;
-               int intMyIp2mod = intMyIp3mod%0x10000;
-               int intMyIp1 = intMyIp2mod/0x100;
-               int intMyIp0 = intMyIp2mod%0x100;
 
-               infoIP = " "+ String.valueOf(intMyIp0)
-                       + "." + String.valueOf(intMyIp1)
-                       + "." + String.valueOf(intMyIp2)
-                       + "." + String.valueOf(intMyIp3);
-               infoEstado = (getResources().getString(R.string.estado_conectado));
-               infoVelocidad = " "+ String.valueOf(
-                       mInformacionWifi.getLinkSpeed()) + " " +
-                       WifiInfo.LINK_SPEED_UNITS;
-               infoSSID =  " "+ mInformacionWifi.getSSID();
-               infoBSSID = " "+ mInformacionWifi.getBSSID();
-               infoRSSID = (getResources().getString(R.string.rssi ))+ " " + mInformacionWifi.getRssi();
-               infoMAC = " " +  mInformacionWifi.getMacAddress();
-               if (!mInformacionWifi.getHiddenSSID())
-                   infoSSIDOculto = (getResources().getString(R.string.ssid_oculto_no));
-               else
-                   infoSSIDOculto = (getResources().getString(R.string.ssid_oculto_si));
-
-               textIP.setText (getResources().getString(R.string.ip)+infoIP);
-               textEstado.setText(infoEstado);
-               textVelocidad.setText(getResources().getString(R.string.velocidad)+ infoVelocidad);
-               textSSID.setText(getResources().getString(R.string.ssid)+ infoSSID);
-               textSIDOculto.setText(infoSSIDOculto);
-               textBSSID.setText (getResources().getString(R.string.bssid )+infoBSSID);
-               textRSSI.setText(infoRSSID);
-               textMAC.setText(getResources().getString(R.string.mac)+infoMAC);
-           }
-           else
-           {
-
-               infoEstado = (getResources().getString(R.string.estado_desconectado));
-               infoNodatos= " --";
-
-               textEstado.setText (infoEstado);
-               textIP.setText(getResources().getString(R.string.ip)+infoNodatos);
-               textVelocidad.setText (getResources().getString(R.string.velocidad)+ infoNodatos);
-               textSSID.setText(getResources().getString(R.string.ssid)+ infoNodatos);
-               textSIDOculto.setText(getResources().getString(R.string.ssid_oculto)+ infoNodatos);
-               textBSSID.setText(getResources().getString(R.string.bssid)+ infoNodatos);
-               textRSSI.setText(getResources().getString(R.string.rssi)+ infoNodatos);
-               textMAC.setText (getResources().getString(R.string.mac)+ infoNodatos);
-           }
-       }
 
 
 
@@ -139,10 +144,12 @@ public class MainActivity_wifi_info extends AppCompatActivity {
         if (wifiManager.isWifiEnabled()){
             menuItemWifiOn.setEnabled(true).setVisible(true);
             menuItemWifiOff.setEnabled(false).setVisible(false);
+
         }
         else {
             menuItemWifiOn.setEnabled(false).setVisible(false);
             menuItemWifiOff.setEnabled(true).setVisible(true);
+
         }
 
         return super.onPrepareOptionsMenu(menu);
@@ -156,6 +163,32 @@ public class MainActivity_wifi_info extends AppCompatActivity {
         Intent reinicio = getIntent();
         finish();
         startActivity(reinicio);
+    }
+
+    public void mensajewifion() {
+        Toast toast1 =
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.men_wifi_on),
+                        Toast.LENGTH_SHORT);
+
+        toast1.show();
+    }
+    public void mensajewifioff() {
+        Toast toast1 =
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.men_wifi_off),
+                        Toast.LENGTH_SHORT);
+
+        toast1.show();
+    }
+
+    public void mensajeactualizar() {
+        Toast toast1 =
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.actualizar),
+                        Toast.LENGTH_SHORT);
+
+        toast1.show();
     }
     @Override
     protected void onRestart() {
@@ -174,12 +207,10 @@ public class MainActivity_wifi_info extends AppCompatActivity {
             case R.id.estado_wifi_on:
                 wifiManager.setWifiEnabled(true);
                 EstadoWifi();
-                detalleswifi();
-               invalidateOptionsMenu();
+                invalidateOptionsMenu();
             case R.id.estado_wifi_off:
                 wifiManager.setWifiEnabled(false);
                 EstadoWifi();
-                detalleswifi();
                 invalidateOptionsMenu();
 
             return true;
@@ -196,11 +227,10 @@ public class MainActivity_wifi_info extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.reiniciar:
-                //reinicia la aplicación
-                /*Intent reinicio = getIntent();
-                finish();
-                startActivity(reinicio);*/
-                detalleswifi();
+
+                reinicio();
+
+                mensajeactualizar();
 
                 return true;
             case R.id.salir:
