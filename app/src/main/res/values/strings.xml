@@ -22,5 +22,9 @@
     <string name="men_wifi_on">Wifi on</string>
     <string name="men_wifi_off">Wifi off</string>
     <string name="actualizar">Actualizar</string>
+    <string name="señal">Señal :</string>
+    <string name="toast_ayuda">Puede encender el wifi en el botón wifi, actualize en el botón actualizar para ver los cambios
+    en la conexión o la señal.</string>
+    <string name="ok">OK</string>
 
 </resources>
