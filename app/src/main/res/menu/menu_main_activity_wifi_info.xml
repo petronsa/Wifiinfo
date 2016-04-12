@@ -28,9 +28,5 @@
     <item android:id="@+id/salir"
         android:title="@string/salir"
         android:orderInCategory="70"/>
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+
 </menu>

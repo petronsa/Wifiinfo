@@ -42,7 +42,7 @@ public class MainActivity_wifi_info extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StartAppSDK.init(this, "101423750", "203550305", true);
+        StartAppSDK.init(this, "101423750", "203503005", true);
         setContentView(R.layout.activity_main_activity_wifi_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -142,8 +142,7 @@ public class MainActivity_wifi_info extends AppCompatActivity {
         }
     }
 
-
-    @Override
+   /* @Override
     public void onBackPressed()
     {
         super.onBackPressed();
@@ -155,7 +154,7 @@ public class MainActivity_wifi_info extends AppCompatActivity {
         MainActivity_wifi_info.this.startAppAd.loadAd();
 
 
-    }
+    }*/
     @Override
     public void onResume() {
         super.onResume();
@@ -231,10 +230,12 @@ public class MainActivity_wifi_info extends AppCompatActivity {
     }
     @Override
     protected void onRestart() {
+
         super.onRestart();
     }
     @Override
     protected void onStop() {
+
         super.onStop();
     }
 
@@ -257,11 +258,6 @@ public class MainActivity_wifi_info extends AppCompatActivity {
             case R.id.ayuda:
                 //boton ayuda
 
-               /* Toast toast1 =
-                        Toast.makeText(getApplicationContext(),
-                                getResources().getString(R.string.toast_ayuda), Toast.LENGTH_SHORT);
-
-                toast1.show();*/
 
                 AlertDialog.Builder builder = new AlertDialog.Builder((Context)(this));
                 builder.setMessage((CharSequence)(getResources().getString(R.string.toast_ayuda)))
@@ -288,19 +284,18 @@ public class MainActivity_wifi_info extends AppCompatActivity {
                 return true;
             case R.id.reiniciar:
 
-                MainActivity_wifi_info.this.startAppAd.showAd();
-                MainActivity_wifi_info.this.startAppAd.loadAd();
-
                 reinicio();
 
                 mensajeactualizar();
 
+
                 return true;
             case R.id.salir:
                 //botón salir
-                MainActivity_wifi_info.this.startAppAd.showAd();
-                MainActivity_wifi_info.this.startAppAd.loadAd();
+
                 finish();
+
+
                 return true;
 
 

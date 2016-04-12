@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wifi info</string>
+    <string name="action_settings">Settings</string>
+    <string name="estado">Estado :</string>
+    <string name="ip">IP :     </string>
+    <string name="ssid">SSID :</string>
+    <string name="ssid_oculto">SSID oculto :</string>
+    <string name="bssid">BSSID :</string>
+    <string name="mac">MAC :</string>
+    <string name="velocidad">Velocidad :</string>
+    <string name="rssi">RSSI :</string>
+    <string name="wifi_on">Wifi On</string>
+    <string name="wifi_off">Wifi Off</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="votar">Votar</string>
+    <string name="salir">Salir</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="estado_conectado">Estado: Conectado a red Wifi</string>
+    <string name="estado_desconectado">Estado: No conectado a red Wifi</string>
+    <string name="ssid_oculto_si">SSID oculto : Sí</string>
+    <string name="ssid_oculto_no">SSID oculto : No</string>
+    <string name="men_wifi_on">Wifi on</string>
+    <string name="men_wifi_off">Wifi off</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="señal">Señal :</string>
+    <string name="toast_ayuda">Puede encender el wifi en el botón wifi, actualize en el botón actualizar para ver los cambios
+    en la conexión o la señal.</string>
+    <string name="ok">OK</string>
+</resources>

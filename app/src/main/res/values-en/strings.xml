@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wifi info</string>
+    <string name="action_settings">Settings</string>
+    <string name="estado">State :</string>
+    <string name="ip">IP :     </string>
+    <string name="ssid">SSID :</string>
+    <string name="ssid_oculto">SSID hidden:</string>
+    <string name="bssid">BSSID :</string>
+    <string name="mac">MAC :</string>
+    <string name="velocidad">Speed :</string>
+    <string name="rssi">RSSI :</string>
+    <string name="wifi_on">Wifi On</string>
+    <string name="wifi_off">Wifi Off</string>
+    <string name="ayuda">Help</string>
+    <string name="votar">Vote</string>
+    <string name="salir">Exit</string>
+    <string name="reiniciar">Restart</string>
+    <string name="estado_conectado">Status: Connected to wireless network</string>
+    <string name="estado_desconectado">Status: Not connected to wireless network</string>
+    <string name="ssid_oculto_si">Hidden SSID: Yes</string>
+    <string name="ssid_oculto_no">Hidden SSID: No</string>
+    <string name="men_wifi_on">Wifi on</string>
+    <string name="men_wifi_off">Wifi off</string>
+    <string name="actualizar">Update</string>
+    <string name="señal">Signal :</string>
+    <string name="toast_ayuda">You can turn the wifi on wifi button updates the refresh button to see the changes in the connection or signal.</string>
+    <string name="ok">OK</string>
+
+</resources>
