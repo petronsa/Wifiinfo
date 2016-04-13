@@ -25,8 +25,8 @@
         android:icon="@drawable/ic_menu_refresh"
         android:orderInCategory="60"
         yourapp:showAsAction="ifRoom" />
-    <item android:id="@+id/salir"
+    <item android:id="@+id/action_settings"
         android:title="@string/salir"
-        android:orderInCategory="70"/>
+        android:orderInCategory="100"/>
 
 </menu>

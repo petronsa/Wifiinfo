@@ -142,7 +142,7 @@ public class MainActivity_wifi_info extends AppCompatActivity {
         }
     }
 
-   /* @Override
+    @Override
     public void onBackPressed()
     {
         super.onBackPressed();
@@ -154,7 +154,8 @@ public class MainActivity_wifi_info extends AppCompatActivity {
         MainActivity_wifi_info.this.startAppAd.loadAd();
 
 
-    }*/
+
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -278,7 +279,7 @@ public class MainActivity_wifi_info extends AppCompatActivity {
 
             case R.id.votar:
                 //boton votar
-                Uri uriUrl = Uri.parse("https://play.google.com/store/apps/details?id=company.petron.imei");
+                Uri uriUrl = Uri.parse("https://play.google.com/store/apps/details?id=company.petron.wifiinfo");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uriUrl);
                 startActivity(intent);
                 return true;
@@ -290,8 +291,10 @@ public class MainActivity_wifi_info extends AppCompatActivity {
 
 
                 return true;
-            case R.id.salir:
+            case R.id.action_settings:
                 //botón salir
+                MainActivity_wifi_info.this.startAppAd.showAd();
+                MainActivity_wifi_info.this.startAppAd.loadAd();
 
                 finish();
 
